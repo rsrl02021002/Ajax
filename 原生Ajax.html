@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="div1"></div>
+    <script>
+        // 第一步：创建XMLHttpRequest对象
+        var xmlhttp;
+        if(window.XMLHttpRequest){  //支持IE7+ Firefox Chrome
+            xmlhttp = new XMLHttpRequest()
+        }else{  //支持IE5 IE6
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
+        }
+
+        // 第二步：向服务器发送请求
+        xmlhttp.open("GET","test.txt",true)  //请求方式  请求接口  true代表异步方式
+        xmlhttp.send()
+
+        // 第三步：服务器响应请求
+        xmlhttp.onreadystatechange=function(){  //判断服务器状态
+            if(xmlhttp.readyState==4&&xmlhttp.status==200){
+                document.getElementById("div1").innerHTML=xmlhttp.responseText
+            }
+        }
+    </script>
+</body>
+</html>
