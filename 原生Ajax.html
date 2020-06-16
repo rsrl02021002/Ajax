@@ -16,9 +16,14 @@
             xmlhttp = new ActiveXObject("Microsoft.XMLHTTP")
         }
 
-        // 第二步：向服务器发送请求
-        xmlhttp.open("GET","test.txt",true)  //请求方式  请求接口  true代表异步方式
+        // 第二步：向服务器发送请求 GET方式
+        xmlhttp.open("GET","test.txt?name=Danny",true)  //请求方式  请求接口  true代表异步方式
         xmlhttp.send()
+
+        //第二步：向服务器发送请求 POST方式
+        xmlhttp.open("POST","test.txt",true)
+        xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded")  //设置请求头
+        xmlhttp.send("name=Danny&age=20")
 
         // 第三步：服务器响应请求
         xmlhttp.onreadystatechange=function(){  //判断服务器状态
